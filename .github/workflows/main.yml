@@ -17,8 +17,8 @@ jobs:
 
       - name: Create release branch
         run: |
-          git checkout prod
-          git pull origin prod
+          git checkout master
+          git pull origin master
 
           BRANCH_NAME="release-$(date +%Y-%m-%d)"
 
