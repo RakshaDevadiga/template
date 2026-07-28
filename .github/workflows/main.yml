@@ -1,0 +1,26 @@
+name: Weekly Branch Creation
+
+on:
+  schedule:
+    # Every Monday at 3:30 UTC (9:00 AM IST)
+    - cron: '30 3 * * 3'
+  workflow_dispatch:
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create release branch
+        run: |
+          git checkout prod
+          git pull origin prod
+
+          BRANCH_NAME="release-$(date +%Y-%m-%d)"
+
+          git checkout -b $BRANCH_NAME
+          git push origin $BRANCH_NAME
