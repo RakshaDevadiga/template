@@ -2,9 +2,12 @@ name: Weekly Branch Creation
 
 on:
   schedule:
-    # Every Monday at 3:30 UTC (9:00 AM IST)
-    - cron: '30 3 * * 3'
+    # Every Wednesday at 3:30 UTC (9:00 AM IST)
+    - cron: '30 3 * * 4'
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   create-branch:
